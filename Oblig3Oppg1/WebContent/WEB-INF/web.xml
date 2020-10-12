@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns="http://java.sun.com/xml/ns/javaee" 
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+        id="WebApp_ID" 
+        version="3.0">
+  <display-name>Handleliste</display-name>
+  <servlet>
+    <servlet-name>LoggInn</servlet-name>
+    <servlet-class>innlogging.LoggInn</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoggInnPost</servlet-name>
+    <servlet-class>innlogging.LoggInnPost</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Handleliste</servlet-name>
+    <servlet-class>handleliste.Handleliste</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HandlelisteLeggTil</servlet-name>
+    <servlet-class>handleliste.HandlelisteLeggTil</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HandlelisteSlett</servlet-name>
+    <servlet-class>handleliste.HandlelisteSlett</servlet-class>
+  </servlet>
+  <context-param>
+    <param-name>passord</param-name>
+    <param-value>admin</param-value>
+  </context-param>
+</web-app>
