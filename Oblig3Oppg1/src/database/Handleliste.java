@@ -23,5 +23,13 @@ public class Handleliste {
 		this.Liste_Id = Liste_Id;
 		this.vareliste = vareliste;
 	}
+	
+	public List<Vare> getVareliste() {
+		return vareliste;
+	}
+	
+	public void setVareliste(List<Vare> vareliste) {
+		this.vareliste = vareliste;
+	}
 
 }

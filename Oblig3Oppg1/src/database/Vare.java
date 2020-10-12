@@ -31,5 +31,10 @@ public class Vare {
 	public Handleliste getHandleliste() {
 		return handleliste;
 	}
+	
+	@Override
+	public String toString() {
+		return this.vareNavn;
+	}
 
 }
