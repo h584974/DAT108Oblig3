@@ -16,9 +16,7 @@ public class HandlelisteLeggTil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private final VareDAO vareDAO = new VareDAO();
-       
-    public HandlelisteLeggTil() {}
+	private VareDAO vareDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -28,8 +26,7 @@ public class HandlelisteLeggTil extends HttpServlet {
 		String vareNavn = request.getParameter("vareNavn");
 		
 		if(vareNavn != null && !vareNavn.isBlank()) {
-			database.Handleliste handleliste = vareDAO.getHandleliste(1);
-			Vare nyVare = new Vare(vareNavn, handleliste);
+			Vare nyVare = new Vare(vareNavn);
 			vareDAO.leggTilVare(nyVare);
 		}
 		

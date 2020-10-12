@@ -15,9 +15,7 @@ public class HandlelisteSlett extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private final VareDAO vareDAO = new VareDAO();
-       
-    public HandlelisteSlett() {}
+	private VareDAO vareDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

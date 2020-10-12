@@ -3,14 +3,12 @@ package handleliste;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import database.Vare;
 import database.VareDAO;
 import innlogging.InnloggingUtil;
@@ -21,9 +19,7 @@ public class Handleliste extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private final VareDAO vareDAO = new VareDAO();
-       
-    public Handleliste() {}
+	private VareDAO vareDAO;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(InnloggingUtil.isInnlogget(request)) {

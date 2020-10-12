@@ -13,23 +13,14 @@ public class Vare {
 	@Id
 	private String vareNavn;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "Liste_Id", referencedColumnName = "Liste_Id")
-	private Handleliste handleliste;
-	
 	public Vare() {}
 	
-	public Vare(String vareNavn, Handleliste handleliste) {
+	public Vare(String vareNavn) {
 		this.vareNavn = vareNavn;
-		this.handleliste = handleliste;
 	}
 	
 	public String getVareNavn() {
 		return vareNavn;
-	}
-	
-	public Handleliste getHandleliste() {
-		return handleliste;
 	}
 	
 	@Override

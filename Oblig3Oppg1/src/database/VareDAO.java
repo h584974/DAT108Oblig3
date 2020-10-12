@@ -1,7 +1,6 @@
 package database;
 
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,12 +20,7 @@ public class VareDAO {
 	}
 	
 	public List<Vare> getVareliste() {
-		Handleliste handleliste = em.find(Handleliste.class, 1);
-		return handleliste.getVareliste();
-	}
-	
-	public Handleliste getHandleliste(Integer id) {
-		return em.find(Handleliste.class, id);
+		return em.createQuery("SELECT v FROM Vare v", Vare.class).getResultList();
 	}
 	
 	public Vare getVare(String vareNavn) {
