@@ -16,7 +16,8 @@ public class VareDAO {
 	}
 	
 	public void slettVare(Vare vare) {
-		em.remove(vare);
+		Vare mergeVare = em.merge(vare);
+		em.remove(mergeVare);
 	}
 	
 	public List<Vare> getVareliste() {

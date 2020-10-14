@@ -19,6 +19,9 @@ public class LoggInnPost extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String passord = request.getParameter("passord");
+		String korrektPassord = getServletConfig().getInitParameter("passord");
+		System.out.println(korrektPassord);
+		
 		if(InnloggingUtil.isGyldigPassord(passord, "admin")) {
 			InnloggingUtil.loggInnMedTimeout(request, 30);
 			response.sendRedirect("Handleliste");
