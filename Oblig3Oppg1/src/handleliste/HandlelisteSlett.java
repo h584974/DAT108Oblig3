@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import database.VareDAO;
 
 @WebServlet("/HandlelisteSlett")
@@ -25,6 +24,7 @@ public class HandlelisteSlett extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String vareNavn = request.getParameter("vareNavn");
 		
+		// Sjekker om vareNavn != null for sikkerhetskyld, og sletter deretter oppgitt vare fra database.
 		if(vareNavn != null) {
 			vareDAO.slettVare(vareDAO.getVare(vareNavn));
 		}

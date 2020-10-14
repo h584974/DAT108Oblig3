@@ -23,6 +23,7 @@ public class Handleliste extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(InnloggingUtil.isInnlogget(request)) {
+			// Henter vareliste fra database
 			List<Vare> vareliste = vareDAO.getVareliste();
 			
 			PrintWriter out = response.getWriter();
@@ -39,18 +40,18 @@ public class Handleliste extends HttpServlet {
 			out.println("<input type=\"text\" name=\"vareNavn\">");
 			out.println("</form>");
 			
+			// Skriver ut et for melement med hver vare, som sender til HandlelisteSlett ved bruk av Slett knapp.
 			vareliste.forEach(vare -> {
 				out.println("<form method=\"post\" action=\"HandlelisteSlett\">");
 				out.println("<p><input type=\"submit\" value=\"Slett\">&ensp;" + EscapeHTML.escape(vare.getVareNavn()) +"</p>");
 				out.println("<input type=\"hidden\" value=\"" + vare + "\" name=\"vareNavn\">");
 				out.println("</form>");
-				
-				System.out.println(EscapeHTML.escape(vare.getVareNavn()));
 			});
 			
 			out.println("</body>");
 			out.println("</html>");
 		}
+		// Redirecter til LoggInn om innlogginstiden er utløpt
 		else {
 			response.sendRedirect("LoggInn");
 		}

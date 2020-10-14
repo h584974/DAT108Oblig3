@@ -25,6 +25,7 @@ public class HandlelisteLeggTil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String vareNavn = request.getParameter("vareNavn");
 		
+		// Sjekker at vare er blitt oppgitt og ikke er tom, og legger så til varen i databasen.
 		if(vareNavn != null && !vareNavn.isBlank()) {
 			Vare nyVare = new Vare(vareNavn);
 			vareDAO.leggTilVare(nyVare);

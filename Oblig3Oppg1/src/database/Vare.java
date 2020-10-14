@@ -23,6 +23,7 @@ public class Vare {
 		return vareNavn;
 	}
 	
+	// For enkel bruk i utskrift.
 	@Override
 	public String toString() {
 		return this.vareNavn;

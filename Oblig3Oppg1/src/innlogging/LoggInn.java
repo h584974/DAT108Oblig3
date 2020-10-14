@@ -29,6 +29,7 @@ public class LoggInn extends HttpServlet {
 		out.println("<fieldset>");
 		out.println("<legend>Innlogging</legend>");
 		
+		// Skriver ut feilmelding hvis den ble redirected med feilmelding
 		if(feilmelding != null)
 			out.println("<p>" + feilmelding + "</p>");
 		
