@@ -25,9 +25,11 @@ public class HandlelistePost extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Henter slett parameter og vareNavn parameter.
 		boolean slett = Boolean.parseBoolean(request.getParameter("slett"));
 		String vareNavn = request.getParameter("vareNavn");
 		
+		// Sjekker om vare skal slettes eller legegs til
 		if(slett) {
 			// Sjekker om vareNavn != null for sikkerhetskyld, og sletter deretter oppgitt vare fra database.
 			if(vareNavn != null) {
