@@ -11,11 +11,11 @@ public class VareDAO {
 	@PersistenceContext(name = "varePU")
 	private EntityManager em;
 	
-	public void leggTilVare(Vare vare) {
+	public synchronized void leggTilVare(Vare vare) {
 		em.persist(vare);
 	}
 	
-	public void slettVare(Vare vare) {
+	public synchronized void slettVare(Vare vare) {
 		Vare mergeVare = em.merge(vare);
 		em.remove(mergeVare);
 	}
