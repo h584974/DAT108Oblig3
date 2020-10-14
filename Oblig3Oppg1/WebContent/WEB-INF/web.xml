@@ -6,26 +6,10 @@
         id="WebApp_ID" 
         version="3.0">
   <display-name>Handleliste</display-name>
-  <servlet>
-    <servlet-name>LoggInn</servlet-name>
-    <servlet-class>innlogging.LoggInn</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>LoggInnPost</servlet-name>
-    <servlet-class>innlogging.LoggInnPost</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>Handleliste</servlet-name>
-    <servlet-class>handleliste.Handleliste</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>HandlelisteLeggTil</servlet-name>
-    <servlet-class>handleliste.HandlelisteLeggTil</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>HandlelisteSlett</servlet-name>
-    <servlet-class>handleliste.HandlelisteSlett</servlet-class>
-  </servlet>
+  <context-param>
+    <param-name>innloggingstid</param-name>
+    <param-value>30</param-value>
+  </context-param>
   <context-param>
     <param-name>passord</param-name>
     <param-value>admin</param-value>

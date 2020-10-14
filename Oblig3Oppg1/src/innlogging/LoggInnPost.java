@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/LoggInnPost")
 public class LoggInnPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public LoggInnPost() {}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -19,11 +17,17 @@ public class LoggInnPost extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String passord = request.getParameter("passord");
-		String korrektPassord = getServletConfig().getInitParameter("passord");
-		System.out.println(korrektPassord);
+		String korrektPassord = getServletContext().getInitParameter("passord");
+		String tidStr = getServletContext().getInitParameter("innloggingstid");
+		int tid = 0;
 		
-		if(InnloggingUtil.isGyldigPassord(passord, "admin")) {
-			InnloggingUtil.loggInnMedTimeout(request, 30);
+		try {
+			tid = Integer.parseInt(tidStr);
+		}
+		catch (NumberFormatException e){}
+		
+		if(InnloggingUtil.isGyldigPassord(passord, korrektPassord)) {
+			InnloggingUtil.loggInnMedTimeout(request, tid);
 			response.sendRedirect("Handleliste");
 		}
 		else {
