@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import database.Vare;
 import database.VareDAO;
 import innlogging.InnloggingUtil;
+import org.apache.commons.text.StringEscapeUtils;
 
 @WebServlet("/Handleliste")
 public class Handleliste extends HttpServlet {
@@ -41,9 +42,11 @@ public class Handleliste extends HttpServlet {
 			
 			vareliste.forEach(vare -> {
 				out.println("<form method=\"post\" action=\"HandlelisteSlett\">");
-				out.println("<p><input type=\"submit\" value=\"Slett\">&ensp;" + vare +"</p>");
+				out.println("<p><input type=\"submit\" value=\"Slett\">&ensp;" + EscapeHTML.escape(vare.getVareNavn()) +"</p>");
 				out.println("<input type=\"hidden\" value=\"" + vare + "\" name=\"vareNavn\">");
 				out.println("</form>");
+				
+				System.out.println(EscapeHTML.escape(vare.getVareNavn()));
 			});
 			
 			out.println("</body>");

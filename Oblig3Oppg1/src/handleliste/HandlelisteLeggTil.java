@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import database.Vare;
 import database.VareDAO;
+import org.apache.commons.text.StringEscapeUtils;
 
 @WebServlet("/HandlelisteLeggTil")
 public class HandlelisteLeggTil extends HttpServlet {
