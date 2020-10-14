@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import database.Vare;
 import database.VareDAO;
 import innlogging.InnloggingUtil;
-import org.apache.commons.text.StringEscapeUtils;
 
 @WebServlet("/Handleliste")
 public class Handleliste extends HttpServlet {
