@@ -23,24 +23,28 @@ public class HandlelistePost extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Henter slett parameter og vareNavn parameter.
+		// Henter parametre fra request.
 		boolean slett = Boolean.parseBoolean(request.getParameter("slett"));
 		String vareNavn = request.getParameter("vareNavn");
+		int karakterGrense = 0;
 		
-		// Sjekker om vare skal slettes eller legegs til
-		if(slett) {
-			// Sjekker om vareNavn != null for sikkerhetskyld, og sletter deretter oppgitt vare fra database.
-			if(vareNavn != null) {
+		// Hvis karaktergrensen skulle bli lest feil settes den default til 0, 
+		// som fører til at en vare vil hverken bli lagt til eller slettet.
+		try {
+			karakterGrense = Integer.parseInt(getServletContext().getInitParameter("karaktergrense"));
+		}
+		catch(NumberFormatException e) {};
+		
+		if(vareNavn != null && !vareNavn.isBlank() && vareNavn.length() <= karakterGrense) {
+			// Sjekker om vi skal slette eller legge til vare
+			if(slett) {
 				vareDAO.slettVare(vareDAO.getVare(vareNavn));
 			}
-		}
-		else {
-			// Sjekker at vare er blitt oppgitt og ikke er tom, og legger så til varen i databasen.
-			if(vareNavn != null && !vareNavn.isBlank()) {
-				Vare nyVare = new Vare(vareNavn);
-				vareDAO.leggTilVare(nyVare);
+			else {
+				vareDAO.leggTilVare(new Vare(vareNavn));
 			}
 		}
+		
 		response.sendRedirect("Handleliste");
 	}
 
